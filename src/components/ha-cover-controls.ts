@@ -75,6 +75,17 @@ class HaCoverControls extends LitElement {
           @click=${this._onCloseTap}
           .disabled=${this._computeClosedDisabled()}
         ></ha-icon-button>
+        <ha-icon-button
+          class=${classMap({
+            hidden: !this._entityObj.supportsSetVentilation,
+          })}
+          .label=${this.hass.localize(
+            "ui.dialogs.more_info_control.set_cover_ventilation"
+          )}
+          icon="hass:hvac"
+          @click=${this._onSetVentilationTap}
+          .disabled=${this._computeVentilationDisabled()}
+        ></ha-icon-button>
       </div>
     `;
   }
@@ -101,6 +112,14 @@ class HaCoverControls extends LitElement {
     );
   }
 
+  private _computeVentilationDisabled(): boolean {
+    if (this.stateObj.state === UNAVAILABLE) {
+      return true;
+    }
+    const assumedState = this.stateObj.attributes.assumed_state === true;
+    return this._entityObj.isVentilationPosition && !assumedState;
+  }
+
   private _onOpenTap(ev): void {
     ev.stopPropagation();
     this._entityObj.openCover();
@@ -114,6 +133,11 @@ class HaCoverControls extends LitElement {
   private _onStopTap(ev): void {
     ev.stopPropagation();
     this._entityObj.stopCover();
+  }
+
+  private _onSetVentilationTap(ev): void {
+    ev.stopPropagation();
+    this._entityObj.setCoverVentilation();
   }
 
   static get styles(): CSSResult {

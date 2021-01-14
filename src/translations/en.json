@@ -611,7 +611,8 @@
           "close_cover": "Close cover",
           "open_tilt_cover": "Open cover tilt",
           "close_tile_cover": "Close cover tilt",
-          "stop_cover": "Stop cover from moving"
+          "stop_cover": "Stop cover from moving",
+          "set_cover_ventilation": "Set cover to ventilation position"
         }
       },
       "entity_registry": {

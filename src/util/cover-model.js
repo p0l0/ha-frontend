@@ -39,6 +39,10 @@ export default class CoverEntity {
     return this.stateObj.state === "closing";
   }
 
+  get isVentilationPosition() {
+    return this.stateObj.state === "ventilation";
+  }
+
   get supportsOpen() {
     return supportsFeature(this.stateObj, 1);
   }
@@ -69,6 +73,10 @@ export default class CoverEntity {
 
   get supportsSetTiltPosition() {
     return supportsFeature(this.stateObj, 128);
+  }
+
+  get supportsSetVentilation() {
+    return supportsFeature(this.stateObj, 256);
   }
 
   get isTiltOnly() {
@@ -113,6 +121,10 @@ export default class CoverEntity {
     });
   }
 
+  setCoverVentilation() {
+    this.callService("set_cover_ventilation");
+  }
+
   // helper method
 
   callService(service, data = {}) {
@@ -137,6 +149,9 @@ export const supportsStopTilt = (stateObj) => supportsFeature(stateObj, 64);
 
 export const supportsSetTiltPosition = (stateObj) =>
   supportsFeature(stateObj, 128);
+
+export const supportsSetVentilation = (stateObj) =>
+  supportsFeature(stateObj, 256);
 
 export function isTiltOnly(stateObj) {
   const supportsCover =
