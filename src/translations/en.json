@@ -300,8 +300,8 @@
         "by": "by",
         "by_service": "by service",
         "messages": {
-          "was_away": "was away",
-          "was_at_state": "was at {state}",
+          "was_away": "was detected away",
+          "was_at_state": "was detected at {state}",
           "rose": "rose",
           "set": "set",
           "was_low": "was low",
@@ -314,7 +314,7 @@
           "was_locked": "was locked",
           "was_plugged_in": "was plugged in",
           "was_unplugged": "was unplugged",
-          "was_at_home": "was at home",
+          "was_at_home": "was detected at home",
           "was_unsafe": "was unsafe",
           "was_safe": "was safe",
           "detected_device_class": "detected {device_class}",
@@ -1656,6 +1656,13 @@
             "connected": "Connected",
             "not_connected": "Not Connected",
             "fetching_subscription": "Fetching subscription…",
+            "tts": {
+              "title": "Text to Speech",
+              "info": "Bring personality to your home by having it speak to you by using our Text-to-Speech services. You can use this in automations and scripts by using the {service} service.",
+              "default_language": "Default language to use",
+              "male": "Male",
+              "female": "Female"
+            },
             "remote": {
               "title": "Remote Control",
               "access_is_being_prepared": "Remote access is being prepared. We will notify you when it's ready.",
@@ -2978,6 +2985,7 @@
       "page-authorize": {
         "initializing": "Initializing",
         "authorizing_client": "You're about to give {clientId} access to your Home Assistant instance.",
+        "logging_in_to_with": "Logging in to **{locationName}** with **{authProviderName}**.",
         "logging_in_with": "Logging in with **{authProviderName}**.",
         "pick_auth_provider": "Or log in with",
         "abort_intro": "Login aborted",
